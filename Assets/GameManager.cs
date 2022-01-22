@@ -36,12 +36,9 @@ public class GameManager : Singleton<GameManager>
     private float nowMpRegenrateCooldown;
     [SerializeField] private Image MpGauge;
     [SerializeField] private TextMeshProUGUI MpText;
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
+    [Header("Skill Info")]
+    public bool MaxValue;
     void Update()
     {
         SummonBubble();
@@ -116,22 +113,45 @@ public class GameManager : Singleton<GameManager>
     }
     public void ClickedBallon(States type)
     {
-        switch (type)
+        if (MaxValue)
         {
-            case States.POPULATION:
-                Status.Population += Random.Range(addStatusMinValue.Population, addStatusMaxValue.Population);
-                break;
-            case States.HAPPINESS:
-                Status.Happiness += Random.Range(addStatusMinValue.Happiness, addStatusMaxValue.Happiness);
-                break;
-            case States.ENVIRONMENT:
-                Status.Environment += Random.Range(addStatusMinValue.Environment, addStatusMaxValue.Environment);
-                break;
-            case States.RESOURCES:
-                Status.Resources += Random.Range(addStatusMinValue.Resources, addStatusMaxValue.Resources);
-                break;
-            default:
-                break;
+            switch (type)
+            {
+                case States.POPULATION:
+                    Status.Population += addStatusMaxValue.Population;
+                    break;
+                case States.HAPPINESS:
+                    Status.Happiness += addStatusMaxValue.Happiness;
+                    break;
+                case States.ENVIRONMENT:
+                    Status.Environment += addStatusMaxValue.Environment;
+                    break;
+                case States.RESOURCES:
+                    Status.Resources += addStatusMaxValue.Resources;
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            switch (type)
+            {
+                case States.POPULATION:
+                    Status.Population += Random.Range(addStatusMinValue.Population, addStatusMaxValue.Population);
+                    break;
+                case States.HAPPINESS:
+                    Status.Happiness += Random.Range(addStatusMinValue.Happiness, addStatusMaxValue.Happiness);
+                    break;
+                case States.ENVIRONMENT:
+                    Status.Environment += Random.Range(addStatusMinValue.Environment, addStatusMaxValue.Environment);
+                    break;
+                case States.RESOURCES:
+                    Status.Resources += Random.Range(addStatusMinValue.Resources, addStatusMaxValue.Resources);
+                    break;
+                default:
+                    break;
+            }
         }
     }
     public void GameOver()

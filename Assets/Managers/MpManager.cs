@@ -13,11 +13,11 @@ public class MpManager : MonoBehaviour
     int MaxManaLevel = 1;
     [SerializeField] TextMeshProUGUI MaxMpText;
 
-    
+
 
     public void RegenerateMpLevelUp()
     {
-        if(GameManager.Instance.MP > ManaLevelupCost * ManaLevelupLevel)
+        if (GameManager.Instance.MP > ManaLevelupCost * ManaLevelupLevel)
         {
             GameManager.Instance.MP -= ManaLevelupCost * ManaLevelupLevel;
             ManaLevelupLevel++;
@@ -27,7 +27,7 @@ public class MpManager : MonoBehaviour
 
     public void MaxMpLevelUp()
     {
-        if(GameManager.Instance.MP > MaxManaCost * MaxManaLevel)
+        if (GameManager.Instance.MP > MaxManaCost * MaxManaLevel)
         {
             GameManager.Instance.MP -= MaxManaCost * MaxManaLevel;
             MaxManaLevel++;
@@ -35,8 +35,16 @@ public class MpManager : MonoBehaviour
         }
     }
 
+    Coroutine YanPowerCoroutine;
     public void YanPower()
     {
-         
+        StopCoroutine(YanPowerCoroutine);
+        YanPowerCoroutine = StartCoroutine(YanPowerDelay());
+    }
+    IEnumerator YanPowerDelay()
+    {
+        GameManager.Instance.MaxValue = true;
+        yield return new WaitForSeconds(15);
+        GameManager.Instance.MaxValue = false;
     }
 }
