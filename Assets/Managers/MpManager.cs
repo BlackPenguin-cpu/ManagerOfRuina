@@ -13,8 +13,10 @@ public class MpManager : MonoBehaviour
     int MaxManaLevel = 1;
     [SerializeField] TextMeshProUGUI MaxMpText;
 
-
-
+    void OnOffButton()
+    {
+        
+    }
     public void RegenerateMpLevelUp()
     {
         if (GameManager.Instance.MP > ManaLevelupCost * ManaLevelupLevel)
@@ -47,4 +49,5 @@ public class MpManager : MonoBehaviour
         yield return new WaitForSeconds(15);
         GameManager.Instance.MaxValue = false;
     }
+
 }
