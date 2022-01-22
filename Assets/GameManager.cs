@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [System.Serializable]
 public struct Values
@@ -16,6 +17,7 @@ public class GameManager : Singleton<GameManager>
     [Header("Status Info")]
     public Values Status;
     [SerializeField] private List<Image> StatusGauge;
+    [SerializeField] private List<TextMeshProUGUI> Texts;
 
     [Header("Ballon Info")]
     public Values addStatusMaxValue;
@@ -53,6 +55,11 @@ public class GameManager : Singleton<GameManager>
         StatusGauge[1].fillAmount = (float)Status.Happiness / 100;
         StatusGauge[2].fillAmount = (float)Status.Environment / 100;
         StatusGauge[3].fillAmount = (float)Status.Resources / 100;
+
+        Texts[0].text = Status.Population + " / 100";
+        Texts[1].text = Status.Happiness + " / 100";
+        Texts[2].text = Status.Environment + " / 100";
+        Texts[3].text = Status.Resources + " / 100";
 
         float All = Status.Environment + Status.Resources + Status.Happiness + Status.Population;
         MainGauge.fillAmount = All / 400;
