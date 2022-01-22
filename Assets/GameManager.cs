@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
 {
     [Header("Status Info")]
     public Values Status;
-    [SerializeField] private List<Slider> StatusGauge;
+    [SerializeField] private List<Image> StatusGauge;
     
     [Header("Ballon Info")]
     public Values addStatusMaxValue;
@@ -25,14 +25,14 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Duality Info")]
     public int MainValue;
-    [SerializeField] private Slider MainGauge;
+    [SerializeField] private Image MainGauge;
 
     [Header("MP Info")]
     public int MPMax;
     public int MP;
     public int MpRegenrateValue;
     private float nowMpRegenrateCooldown;
-    [SerializeField] private Slider MpGauge;
+    [SerializeField] private Image MpGauge;
     void Start()
     {
 
@@ -41,21 +41,21 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        //GaugePrint();
+        GaugePrint();
         MpIncrease();
     }
     void GaugePrint()
     {
         //Status Value
-        StatusGauge[0].value = Status.Population / 100;
-        StatusGauge[1].value = Status.Happiness / 100;
-        StatusGauge[2].value = Status.Environment / 100;
-        StatusGauge[3].value = Status.Resources / 100;
+        StatusGauge[0].fillAmount = (float)Status.Population / 100;
+        StatusGauge[1].fillAmount = (float)Status.Happiness / 100;
+        StatusGauge[2].fillAmount = (float)Status.Environment / 100;
+        StatusGauge[3].fillAmount = (float)Status.Resources / 100;
 
-        int All = Status.Environment + Status.Resources + Status.Happiness + Status.Population;
-        MainGauge.value = All / 400;
+        float All = Status.Environment + Status.Resources + Status.Happiness + Status.Population;
+        MainGauge.fillAmount = All / 400;
 
-        MpGauge.value = MP / MPMax;
+        MpGauge.fillAmount = (float)MP / (float)MPMax;
     }
 
     void MpIncrease()
