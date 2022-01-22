@@ -20,9 +20,9 @@ public class TimeManager : MonoBehaviour
     void Update()
     {
         duration += Time.deltaTime;
-        if(duration >= 60)
+        if(duration >= 30)
         {
-            duration -= 60;
+            duration = 0;
             years++;
             tmpro.text = years.ToString() + "³â Â÷";
             if(years % 2 == 0)
