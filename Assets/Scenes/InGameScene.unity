@@ -7119,6 +7119,8 @@ MonoBehaviour:
   - {fileID: 988758874}
   - {fileID: 1587641294}
   - {fileID: 652075355}
+  - {fileID: 662116194}
+  - {fileID: 2008911746}
   addStatusMaxValue:
     Population: 6
     Happiness: 6
@@ -7138,6 +7140,9 @@ MonoBehaviour:
   MpGauge: {fileID: 819922463}
   MpText: {fileID: 1629150486}
   MaxValue: 0
+  ui:
+  - {fileID: 440306992}
+  - {fileID: 270521569}
 --- !u!4 &1832092361
 Transform:
   m_ObjectHideFlags: 0
