@@ -616,6 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseobj: {fileID: 688603724}
+  settingobj: {fileID: 522432302}
 --- !u!1 &416635810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,7 +1105,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 469952835}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 374959708}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: OnClick5
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &469952835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1550,7 +1563,6 @@ GameObject:
   - component: {fileID: 644687738}
   - component: {fileID: 644687737}
   - component: {fileID: 644687740}
-  - component: {fileID: 644687739}
   m_Layer: 5
   m_Name: Resume
   m_TagString: Untagged
@@ -1615,19 +1627,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644687735}
   m_CullTransparentMesh: 1
---- !u!114 &644687739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 644687735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 635ff583999cbf54caf0de9f53e922c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseobj: {fileID: 688603724}
 --- !u!114 &644687740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1672,7 +1671,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 644687739}
+      - m_Target: {fileID: 374959708}
         m_TargetAssemblyTypeName: Pause, Assembly-CSharp
         m_MethodName: OnClick3
         m_Mode: 1
@@ -1830,7 +1829,6 @@ GameObject:
   - component: {fileID: 666264661}
   - component: {fileID: 666264660}
   - component: {fileID: 666264663}
-  - component: {fileID: 666264662}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -1895,19 +1893,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666264658}
   m_CullTransparentMesh: 1
---- !u!114 &666264662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666264658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 635ff583999cbf54caf0de9f53e922c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseobj: {fileID: 0}
 --- !u!114 &666264663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1952,7 +1937,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 666264662}
+      - m_Target: {fileID: 374959708}
         m_TargetAssemblyTypeName: Pause, Assembly-CSharp
         m_MethodName: OnClick4
         m_Mode: 1
@@ -2190,7 +2175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &688603725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3979,7 +3964,6 @@ GameObject:
   - component: {fileID: 1422088221}
   - component: {fileID: 1422088220}
   - component: {fileID: 1422088223}
-  - component: {fileID: 1422088222}
   m_Layer: 5
   m_Name: Setting
   m_TagString: Untagged
@@ -4044,19 +4028,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422088218}
   m_CullTransparentMesh: 1
---- !u!114 &1422088222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1422088218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 635ff583999cbf54caf0de9f53e922c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseobj: {fileID: 0}
 --- !u!114 &1422088223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4101,7 +4072,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1422088222}
+      - m_Target: {fileID: 374959708}
         m_TargetAssemblyTypeName: Pause, Assembly-CSharp
         m_MethodName: OnClick2
         m_Mode: 1
@@ -4635,8 +4606,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillBar: {fileID: 1600329109}
+  PowerBar: {fileID: 0}
+  Barsprites: []
   MpText: {fileID: 0}
   MaxMpText: {fileID: 0}
+  YanPowerText: {fileID: 0}
 --- !u!1 &1629150484
 GameObject:
   m_ObjectHideFlags: 0
