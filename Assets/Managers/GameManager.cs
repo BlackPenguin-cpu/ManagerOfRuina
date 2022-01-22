@@ -29,7 +29,7 @@ public class GameManager : Singleton<GameManager>
     public int MPMax;
     public int MP;
     public int MpRegenrateValue;
-    private float nowMpRegenrateValue
+    private float nowMpRegenrateValue;
     void Start()
     {
 
