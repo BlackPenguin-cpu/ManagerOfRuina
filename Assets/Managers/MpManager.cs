@@ -26,6 +26,8 @@ public class MpManager : MonoBehaviour
 
     int YinPowerCost = 100;
 
+    int StatusUpgradeValue = 40;
+
     public void OnOffButton()
     {
         if (!SkillBarOn)
@@ -84,9 +86,9 @@ public class MpManager : MonoBehaviour
         if (GameManager.Instance.MP >= YanPowerCost)
         {
             GameManager.Instance.MP -= YanPowerCost;
-            if(YanPowerCoroutine != null)
-            StopCoroutine(YanPowerCoroutine);
-            
+            if (YanPowerCoroutine != null)
+                StopCoroutine(YanPowerCoroutine);
+
             YanPowerCoroutine = StartCoroutine(YanPowerDelay());
         }
     }
@@ -99,14 +101,14 @@ public class MpManager : MonoBehaviour
         YanPowerText.gameObject.SetActive(false);
     }
 
-    Coroutine YinPowerCoroutine; 
+    Coroutine YinPowerCoroutine;
     public void YinPower()
     {
         if (GameManager.Instance.MP >= YinPowerCost)
         {
             GameManager.Instance.MP -= YinPowerCost;
 
-            if(YinPowerCoroutine != null)
+            if (YinPowerCoroutine != null)
             {
                 StopCoroutine(YinPowerCoroutine);
             }
@@ -118,6 +120,15 @@ public class MpManager : MonoBehaviour
         GameManager.Instance.BallonCooltime = 1;
         yield return new WaitForSeconds(15);
         GameManager.Instance.BallonCooltime = 2;
+    }
+
+    public void HappinessUpgrade()
+    {
+        if (GameManager.Instance.MP >= StatusUpgradeValue)
+        {
+            GameManager.Instance.MP -= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Happiness;
+            GameManager.Instance.addStatusMinValue.Happiness++;
+        }
     }
 
 
