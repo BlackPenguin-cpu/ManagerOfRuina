@@ -32,19 +32,7 @@ public class Marker : MonoBehaviour
 
     public void ButtonClick()
     {
-        switch (thisState)
-        {
-            case States.ENVIRONMENT:
-                break;
-            case States.HAPPINESS:
-                break;
-            case States.POPULATION:
-                break;
-            case States.RESOURCES:
-                break;
-            default:
-                break;
-        }
+        GameManager.Instance.ClickedBallon(thisState);
         anime.SetBool("Off", true);
     }
 
