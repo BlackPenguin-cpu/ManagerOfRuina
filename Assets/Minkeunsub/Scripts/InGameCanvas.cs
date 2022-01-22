@@ -10,7 +10,7 @@ public enum States
     RESOURCES
 }
 
-public class InGameCanvas : MonoBehaviour
+public class InGameCanvas : Singleton<InGameCanvas>
 {
     [Header("Marker")]
     [SerializeField] Marker MarkerPrefab;

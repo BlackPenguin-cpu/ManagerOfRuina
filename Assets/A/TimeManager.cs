@@ -14,7 +14,8 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        years = 0;
+        years = 1;
+        tmpro.text = years.ToString() + "³â Â÷";
     }
 
     // Update is called once per frame

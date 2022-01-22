@@ -16,7 +16,7 @@ public class GameManager : Singleton<GameManager>
     [Header("Status Info")]
     public Values Status;
     [SerializeField] private List<Image> StatusGauge;
-    
+
     [Header("Ballon Info")]
     public Values addStatusMaxValue;
     public Values addStatusMinValue;
@@ -41,8 +41,9 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        GaugePrint();
+        SummonBubble();
         MpIncrease();
+        GaugePrint();
     }
     void GaugePrint()
     {
@@ -57,11 +58,20 @@ public class GameManager : Singleton<GameManager>
 
         MpGauge.fillAmount = (float)MP / (float)MPMax;
     }
-
+    void SummonBubble()
+    {
+        if (BallonCooltime < nowBallonCooltime)
+        {
+            nowBallonCooltime = 0;
+            InGameCanvas.Instance.Pop(Random.Range(0, 4));
+        }
+        nowBallonCooltime += Time.deltaTime;
+    }
     void MpIncrease()
     {
-        if(nowMpRegenrateCooldown > 1 && MPMax > MP)
+        if (nowMpRegenrateCooldown > 1 && MPMax > MP)
         {
+            nowMpRegenrateCooldown = 0;
             MP += MpRegenrateValue;
         }
         nowMpRegenrateCooldown += Time.deltaTime;
@@ -71,16 +81,16 @@ public class GameManager : Singleton<GameManager>
         switch (type)
         {
             case States.POPULATION:
-                Status.Population += Random.Range(addStatusMinValue.Population,addStatusMaxValue.Population);
+                Status.Population += Random.Range(addStatusMinValue.Population, addStatusMaxValue.Population);
                 break;
             case States.HAPPINESS:
-                Status.Happiness += Random.Range(addStatusMinValue.Happiness,addStatusMaxValue.Happiness);
+                Status.Happiness += Random.Range(addStatusMinValue.Happiness, addStatusMaxValue.Happiness);
                 break;
             case States.ENVIRONMENT:
-                Status.Environment += Random.Range(addStatusMinValue.Environment,addStatusMaxValue.Environment);
+                Status.Environment += Random.Range(addStatusMinValue.Environment, addStatusMaxValue.Environment);
                 break;
             case States.RESOURCES:
-                Status.Resources += Random.Range(addStatusMinValue.Resources,addStatusMaxValue.Resources);
+                Status.Resources += Random.Range(addStatusMinValue.Resources, addStatusMaxValue.Resources);
                 break;
             default:
                 break;
