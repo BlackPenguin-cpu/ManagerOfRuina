@@ -13,21 +13,21 @@ public struct Values
 }
 public class GameManager : Singleton<GameManager>
 {
-    [Header("¸ÞÀÎ ½ºÅ×ÀÌÅÍ½º")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í½ï¿½")]
     public Values Status;
     [SerializeField] private List<Slider> StatusGague;
     
-    [Header("Ballon °ü·Ã")]
+    [Header("Ballon ï¿½ï¿½ï¿½ï¿½")]
     public Values addStatusMaxValue;
     public Values addStatusMinValue;
     public float BallonCooltime;
     private float nowBallonCooltime;
 
-    [Header("À½¾ç°ÔÀÌÁö")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public int MainGauge;
     [SerializeField] private Slider MainGague;
 
-    [Header("MP °ü·Ã")]
+    [Header("MP ï¿½ï¿½ï¿½ï¿½")]
     public int MPMax;
     public int MP;
     public int MpRegenrateValue;
