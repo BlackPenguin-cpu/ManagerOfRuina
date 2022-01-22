@@ -6,33 +6,33 @@ using UnityEngine.UI;
 [System.Serializable]
 public struct Values
 {
-    public int Human;
-    public int Happy;
-    public int Environmet;
-    public int Mineral;
+    public int Population;
+    public int Happiness;
+    public int Environment;
+    public int Resources;
 }
 public class GameManager : Singleton<GameManager>
 {
-    [Header("���� �������ͽ�")]
+    [Header("Status Info")]
     public Values Status;
-    [SerializeField] private List<Slider> StatusGague;
+    [SerializeField] private List<Slider> StatusGauge;
     
-    [Header("Ballon ����")]
+    [Header("Ballon Info")]
     public Values addStatusMaxValue;
     public Values addStatusMinValue;
     public float BallonCooltime;
     private float nowBallonCooltime;
 
-    [Header("���������")]
-    public int MainGauge;
-    [SerializeField] private Slider MainGague;
+    [Header("Duality Info")]
+    public int MainValue;
+    [SerializeField] private Slider MainGauge;
 
-    [Header("MP ����")]
+    [Header("MP Info")]
     public int MPMax;
     public int MP;
     public int MpRegenrateValue;
     private float nowMpRegenrateCooldown;
-    [SerializeField] private Slider MpGague;
+    [SerializeField] private Slider MpGauge;
     void Start()
     {
 
@@ -41,13 +41,21 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        GaugePrint();
+        //GaugePrint();
         MpIncrease();
     }
     void GaugePrint()
     {
         //Status Value
-        StatusGague[0].value = status
+        StatusGauge[0].value = Status.Population / 100;
+        StatusGauge[1].value = Status.Happiness / 100;
+        StatusGauge[2].value = Status.Environment / 100;
+        StatusGauge[3].value = Status.Resources / 100;
+
+        int All = Status.Environment + Status.Resources + Status.Happiness + Status.Population;
+        MainGauge.value = All / 400;
+
+        MpGauge.value = MP / MPMax;
     }
 
     void MpIncrease()
@@ -58,21 +66,21 @@ public class GameManager : Singleton<GameManager>
         }
         nowMpRegenrateCooldown += Time.deltaTime;
     }
-    public void ClickedBallon(BallonType type)
+    public void ClickedBallon(States type)
     {
         switch (type)
         {
-            case BallonType.HUMAN:
-                Status.Human += Random.Range(addStatusMinValue.Human,addStatusMaxValue.Human);
+            case States.POPULATION:
+                Status.Population += Random.Range(addStatusMinValue.Population,addStatusMaxValue.Population);
                 break;
-            case BallonType.HAPPY:
-                Status.Happy += Random.Range(addStatusMinValue.Happy,addStatusMaxValue.Happy);
+            case States.HAPPINESS:
+                Status.Happiness += Random.Range(addStatusMinValue.Happiness,addStatusMaxValue.Happiness);
                 break;
-            case BallonType.ENVIRONMENT:
-                Status.Environmet += Random.Range(addStatusMinValue.Environmet,addStatusMaxValue.Environmet);
+            case States.ENVIRONMENT:
+                Status.Environment += Random.Range(addStatusMinValue.Environment,addStatusMaxValue.Environment);
                 break;
-            case BallonType.MINERAL:
-                Status.Mineral += Random.Range(addStatusMinValue.Mineral,addStatusMaxValue.Mineral);
+            case States.RESOURCES:
+                Status.Resources += Random.Range(addStatusMinValue.Resources,addStatusMaxValue.Resources);
                 break;
             default:
                 break;
