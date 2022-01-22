@@ -7,7 +7,9 @@ using DG.Tweening;
 [RequireComponent(typeof(Button))]
 public class Marker : MonoBehaviour
 {
-    //SpriteRenderer sprite;
+    public int index;
+    public Vector3 markPosition;
+    SpriteRenderer renderer;
     States thisState;
     [SerializeField] Image MarkerImg;
     [SerializeField] Image Icon;

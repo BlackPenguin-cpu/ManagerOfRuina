@@ -99,7 +99,7 @@ public class GameManager : Singleton<GameManager>
         if (BallonCooltime < nowBallonCooltime)
         {
             nowBallonCooltime = 0;
-            InGameCanvas.Instance.Pop(Random.Range(0, 4));
+            InGameCanvas.Instance.Pop((States)Random.Range(0, 4));
         }
         nowBallonCooltime += Time.deltaTime;
     }
