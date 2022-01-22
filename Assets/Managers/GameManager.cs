@@ -13,8 +13,16 @@ public struct Values
 public class GameManager : Singleton<GameManager>
 {
     public Values Status;
+    [Header("Ballon 관련")]
     public Values addStatusMaxValue;
     public Values addStatusMinValue;
+    public float BallonCooltime;
+
+    [Header("MP 관련")]
+    int MPMax;
+    int MP;
+
+    int MpRegenrateValue;
     void Start()
     {
 
