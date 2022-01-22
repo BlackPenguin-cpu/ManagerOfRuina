@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 [System.Serializable]
@@ -39,12 +40,22 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Skill Info")]
     public bool MaxValue;
+
+
+    [Header("Game Clear or Over")]
+    [SerializeField] private GameObject[] ui;
     void Update()
     {
         SummonBubble();
         MpIncrease();
         GaugePrint();
         ValueChecker();
+    }
+
+    public void GoToTitle()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("TitleScene");
     }
     void GaugePrint()
     {
@@ -156,11 +167,14 @@ public class GameManager : Singleton<GameManager>
     }
     public void GameOver()
     {
-        Debug.Log("우린 망했어!");
+        ui[1].SetActive(true);
+        Texts[4].text = Singleton<TimeManager>.Instance.years + "년 차";
         Time.timeScale = 0;
     }
     public void GameWin()
     {
+        ui[0].SetActive(false);
+        Texts[5].text = Singleton<TimeManager>.Instance.years + "년 차";
         Debug.Log("우린 살았어!");
         Time.timeScale = 0;
     }
