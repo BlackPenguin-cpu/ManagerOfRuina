@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
 public struct Values
 {
     public int Human;
@@ -12,17 +13,23 @@ public struct Values
 }
 public class GameManager : Singleton<GameManager>
 {
+    [Header("메인 스테이터스")]
     public Values Status;
+    
     [Header("Ballon 관련")]
     public Values addStatusMaxValue;
     public Values addStatusMinValue;
     public float BallonCooltime;
+    private float nowBallonCooltime;
+
+    [Header("음양게이지")]
+    public int MainGauge;
 
     [Header("MP 관련")]
-    int MPMax;
-    int MP;
-
-    int MpRegenrateValue;
+    public int MPMax;
+    public int MP;
+    public int MpRegenrateValue;
+    private float nowMpRegenrateValue
     void Start()
     {
 

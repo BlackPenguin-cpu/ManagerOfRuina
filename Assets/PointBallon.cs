@@ -10,7 +10,7 @@ public enum BallonType
     ENVIRONMENT,
     MINERAL
 }
-
+[RequireComponent(typeof(Button))]
 public abstract class PointBallon : MonoBehaviour
 {
     Button button;
@@ -31,8 +31,10 @@ public abstract class PointBallon : MonoBehaviour
 
     IEnumerator OnclickEvent()
     {
-
-        yield return new WaitForSeconds(1);
+        transform.DOScale(new Vector3(2,2,2),1);
+        yield return new WaitForSeconds(0.3f);
         renderer.DOFade(0,1);
+
+        BallonManager.Instance.ReturnObj(this);
     }
 }
