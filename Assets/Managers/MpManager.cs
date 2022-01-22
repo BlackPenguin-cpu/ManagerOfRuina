@@ -59,8 +59,8 @@ public class MpManager : MonoBehaviour
         if (GameManager.Instance.MP >= YanPowerCost)
         {
             GameManager.Instance.MP -= 200;
-            YanPowerCoroutine = StartCoroutine(YanPowerDelay());
             StopCoroutine(YanPowerCoroutine);
+            YanPowerCoroutine = StartCoroutine(YanPowerDelay());
         }
     }
     IEnumerator YanPowerDelay()

@@ -50,8 +50,8 @@ public class GameManager : Singleton<GameManager>
     {
         //Status Value
         StatusGauge[0].fillAmount = (float)Status.Population / 100;
-        StatusGauge[1].fillAmount = (float)Status.Happiness / 100;
-        StatusGauge[2].fillAmount = (float)Status.Environment / 100;
+        StatusGauge[1].fillAmount = (float)Status.Environment / 100;
+        StatusGauge[2].fillAmount = (float)Status.Happiness / 100;
         StatusGauge[3].fillAmount = (float)Status.Resources / 100;
 
         Texts[0].text = Status.Population + " / 100";
