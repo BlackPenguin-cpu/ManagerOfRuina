@@ -170,12 +170,14 @@ public class GameManager : Singleton<GameManager>
     {
         ui[1].SetActive(true);
         Texts[5].text = Singleton<TimeManager>.Instance.years + "년 차";
+        SoundManager.Instance.Playbgm("Fail");
         Time.timeScale = 0;
     }
     public void GameWin()
     {
         ui[0].SetActive(false);
         Texts[4].text = Singleton<TimeManager>.Instance.years + "년 차";
+        SoundManager.Instance.Playbgm("Clear");
         Debug.Log("우린 살았어!");
         Time.timeScale = 0;
     }

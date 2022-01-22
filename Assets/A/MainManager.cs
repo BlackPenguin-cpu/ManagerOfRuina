@@ -7,6 +7,11 @@ public class MainManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject obj;
+    void Start()
+    {
+        Time.timeScale = 1;
+        SoundManager.Instance.Playbgm("Main");
+    }
     public void OnClick()
     {
         SceneManager.LoadScene("InGameScene");

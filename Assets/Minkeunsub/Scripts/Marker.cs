@@ -29,6 +29,7 @@ public class Marker : MonoBehaviour
         anime = GetComponent<Animator>();
         anime.SetBool("On", true);
         MarkerImg.sprite = _marker;
+        SoundManager.Instance.PlaySound("BbCreate");
         Icon.sprite = _icon;
         canvas = _canvas;
     }
@@ -36,6 +37,7 @@ public class Marker : MonoBehaviour
     public void ButtonClick()
     {
         GameManager.Instance.ClickedBallon(thisState);
+        SoundManager.Instance.PlaySound("BbClick");
         anime.SetBool("Off", true);
     }
 

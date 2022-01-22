@@ -16,6 +16,7 @@ public class EventManager : Singleton<EventManager>
     {
         float random = RandomUtil.valueForProb;
         int Value = TimeManager.Instance.years - 5;
+        SoundManager.Instance.PlaySound("Event");
         eventbg.gameObject.SetActive(true);
         if(random <= 15)
         {
