@@ -9,7 +9,7 @@ public class ObjectPool<T> : Singleton<ObjectPool<T>> where T : MonoBehaviour
     private List<T> pool = new List<T>();
     Transform trnDisable;
 
-    protected override void Awake()
+    void Awake()
     {
         var obj = new GameObject("Disable");
         obj.transform.SetParent(transform);

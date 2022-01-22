@@ -23,6 +23,17 @@ public class SoundManager : Singleton<SoundManager>
     protected SoundManager() { }
     protected virtual void Awake()
     {
+        if (!isNotSingle)
+        {
+            SoundManager[] objects = FindObjectsOfType<SoundManager>();
+            foreach (SoundManager obj in objects)
+            {
+                if (obj.gameObject != this.gameObject)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+        }
         DontDestroyOnLoad(gameObject);
     }
     public void Playbgm(string name)

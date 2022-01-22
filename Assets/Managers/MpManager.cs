@@ -130,6 +130,13 @@ public class MpManager : MonoBehaviour
             GameManager.Instance.addStatusMinValue.Happiness++;
         }
     }
-
+    public void EnvironmentUpgrade()
+    {
+        if (GameManager.Instance.MP >= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Happiness)
+        {
+            GameManager.Instance.MP -= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Happiness;
+            GameManager.Instance.addStatusMinValue.Happiness++;
+        }
+    }
 
 }
