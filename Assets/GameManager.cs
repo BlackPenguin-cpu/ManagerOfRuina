@@ -8,8 +8,8 @@ public struct Values
 {
     public int Population;
     public int Happiness;
-    public int Environment;
     public int Resources;
+    public int Environment;
 }
 public class GameManager : Singleton<GameManager>
 {
@@ -44,6 +44,7 @@ public class GameManager : Singleton<GameManager>
         SummonBubble();
         MpIncrease();
         GaugePrint();
+        ValueChecker();
     }
     void GaugePrint()
     {
@@ -58,6 +59,34 @@ public class GameManager : Singleton<GameManager>
 
         MpGauge.fillAmount = (float)MP / (float)MPMax;
     }
+    void ValueChecker()
+    {
+        if (Status.Environment <= 0 || Status.Happiness <= 0 || Status.Population <= 0 || Status.Happiness <= 0)
+        {
+            GameOver();
+        }
+        if (Status.Environment > 100)
+        {
+            Status.Environment = 100;
+        }
+        if(Status.Happiness > 100)
+        {
+            Status.Happiness = 100;
+        }
+        if(Status.Environment > 100)
+        {
+            Status.Environment = 100;
+        }
+        if (Status.Resources > 100)
+        {
+            Status.Resources = 100;
+        }
+        if(400 == Status.Environment + Status.Resources + Status.Happiness + Status.Population)
+        {
+            GameWin();
+        }
+    }
+
     void SummonBubble()
     {
         if (BallonCooltime < nowBallonCooltime)
@@ -95,5 +124,15 @@ public class GameManager : Singleton<GameManager>
             default:
                 break;
         }
+    }
+    public void GameOver()
+    {
+        Debug.Log("우린 망했어!");
+        Time.timeScale = 0;
+    }
+    public void GameWin()
+    {
+        Debug.Log("우린 살았어!");
+        Time.timeScale = 0;
     }
 }
