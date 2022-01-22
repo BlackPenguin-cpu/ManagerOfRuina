@@ -15,7 +15,7 @@ public class InGameCanvas : Singleton<InGameCanvas>
     [Header("Marker")]
     [SerializeField] Marker MarkerPrefab;
     [SerializeField] List<Marker> MarkersList = new List<Marker>();
-    Stack<Marker> Markers = new Stack<Marker>();
+    List<bool> MarkAble = new List<bool>();
     List<Transform> positions;
     Coroutine nowCoroutine;
 
@@ -32,7 +32,7 @@ public class InGameCanvas : Singleton<InGameCanvas>
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Pop(Random.Range(0, 4));
+            Pop((States)Random.Range(0, 4));
         }
     }
 
@@ -49,29 +49,31 @@ public class InGameCanvas : Singleton<InGameCanvas>
         {
             var temp = Instantiate(MarkerPrefab, transform);
             temp.gameObject.SetActive(false);
-            Markers.Push(temp);
             MarkersList.Add(temp);
+            MarkAble.Add(true);
         }
     }
 
     public void Push(Marker _obj)
     {
         _obj.gameObject.SetActive(false);
-        Markers.Push(_obj);
-    }
-
-    public Marker Pop(int index)
-    {
-        var temp = Markers.Pop();
-        temp.gameObject.SetActive(true);
-        temp.SetImage(Backgrounds[index], Icons[index], this, (States)index);
-        return temp;
+        MarkAble[_obj.index] = true;
     }
 
     public Marker Pop(States state)
     {
-        var temp = Markers.Pop();
+        int index = 0;
+        int markerIndex = Random.Range(0, MarkersList.Count);
+        while (!MarkAble[markerIndex] && index < MarkersList.Count - 1)
+        {
+            index++;
+            markerIndex = Random.Range(0, MarkersList.Count);
+        }
+
+        var temp = MarkersList[markerIndex];
+        MarkAble[markerIndex] = false;
         temp.gameObject.SetActive(true);
+        temp.index = markerIndex;
         temp.SetImage(Backgrounds[(int)state], Icons[(int)state], this, state);
         return temp;
     }
