@@ -7,7 +7,7 @@ using DG.Tweening;
 [RequireComponent(typeof(Button))]
 public class Marker : MonoBehaviour
 {
-    SpriteRenderer renderer;
+    //SpriteRenderer sprite;
     States thisState;
     [SerializeField] Image MarkerImg;
     [SerializeField] Image Icon;
@@ -47,12 +47,12 @@ public class Marker : MonoBehaviour
         canvas.Push(this);
         OnEnd();
     }
-    IEnumerator OnclickEvent()
-    {
-        transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 1).SetEase(Ease.OutBack);
-        yield return new WaitForSeconds(0.3f);
-        renderer.DOFade(0, 1).SetEase(Ease.InOutBack);
-        yield return new WaitForSeconds(1);
-        Destroy(gameObject);
-    }
+    //IEnumerator OnclickEvent()
+    //{
+    //    transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 1).SetEase(Ease.OutBack);
+    //    yield return new WaitForSeconds(0.3f);
+    //    sprite.DOFade(0, 1).SetEase(Ease.InOutBack);
+    //    yield return new WaitForSeconds(1);
+    //    Destroy(gameObject);
+    //}
 }
