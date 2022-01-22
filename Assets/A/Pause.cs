@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Pause : MonoBehaviour
 {
     [SerializeField] GameObject pauseobj;
+    [SerializeField] GameObject settingobj;
     public void OnClick()
     {
         Time.timeScale = 0;
@@ -13,6 +14,7 @@ public class Pause : MonoBehaviour
     }
     public void OnClick2()
     {
+        settingobj.SetActive(true);
     }
     public void OnClick3()
     {
@@ -22,5 +24,9 @@ public class Pause : MonoBehaviour
     public void OnClick4()
     {
         Application.Quit();
+    }
+    public void OnClick5()
+    {
+        settingobj.SetActive(false);
     }
 }
