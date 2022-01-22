@@ -9,7 +9,7 @@ public class Marker : MonoBehaviour
 {
     public int index;
     public Vector3 markPosition;
-    SpriteRenderer renderer;
+    SpriteRenderer sprite;
     States thisState;
     [SerializeField] Image MarkerImg;
     [SerializeField] Image Icon;

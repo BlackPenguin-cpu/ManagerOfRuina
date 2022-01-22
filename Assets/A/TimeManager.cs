@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour
+public class TimeManager : Singleton<TimeManager>
 {
     private float duration;
-    private int years;
+    public int years { get; private set; }
     [SerializeField]
     private TextMeshProUGUI tmpro;
     // Start is called before the first frame update

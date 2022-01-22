@@ -35,6 +35,7 @@ public class GameManager : Singleton<GameManager>
     public int MpRegenrateValue;
     private float nowMpRegenrateCooldown;
     [SerializeField] private Image MpGauge;
+    [SerializeField] private TextMeshProUGUI MpText;
     void Start()
     {
 
@@ -65,10 +66,11 @@ public class GameManager : Singleton<GameManager>
         MainGauge.fillAmount = All / 400;
 
         MpGauge.fillAmount = (float)MP / (float)MPMax;
+        MpText.text = MP + " / " + MPMax;
     }
     void ValueChecker()
     {
-        if (Status.Environment <= 0 || Status.Happiness <= 0 || Status.Population <= 0 || Status.Happiness <= 0)
+        if (Status.Environment <= 0 || Status.Happiness <= 0 || Status.Population <= 0 || Status.Resources <= 0)
         {
             GameOver();
         }
@@ -76,11 +78,11 @@ public class GameManager : Singleton<GameManager>
         {
             Status.Environment = 100;
         }
-        if(Status.Happiness > 100)
+        if (Status.Happiness > 100)
         {
             Status.Happiness = 100;
         }
-        if(Status.Environment > 100)
+        if (Status.Environment > 100)
         {
             Status.Environment = 100;
         }
@@ -88,7 +90,7 @@ public class GameManager : Singleton<GameManager>
         {
             Status.Resources = 100;
         }
-        if(400 == Status.Environment + Status.Resources + Status.Happiness + Status.Population)
+        if (400 == Status.Environment + Status.Resources + Status.Happiness + Status.Population)
         {
             GameWin();
         }
