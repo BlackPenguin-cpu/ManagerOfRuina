@@ -57,8 +57,8 @@ public class GameManager : Singleton<GameManager>
         StatusGauge[3].fillAmount = (float)Status.Resources / 100;
 
         Texts[0].text = Status.Population + " / 100";
-        Texts[1].text = Status.Happiness + " / 100";
-        Texts[2].text = Status.Environment + " / 100";
+        Texts[1].text = Status.Environment + " / 100";
+        Texts[2].text = Status.Happiness + " / 100";
         Texts[3].text = Status.Resources + " / 100";
 
         float All = Status.Environment + Status.Resources + Status.Happiness + Status.Population;
