@@ -33,19 +33,19 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
         }
     }
-    protected virtual void Awake()
-    {
-        if (!isNotSingle)
-        {
-            T[] objects = FindObjectsOfType<T>();
-            foreach (T obj in objects)
-            {
-                if (obj.gameObject != this.gameObject)
-                {
-                    Destroy(this.gameObject);
-                }
-            }
-        }
-        DontDestroyOnLoad(gameObject);
-    }
+    //protected virtual void Awake()
+    //{
+    //    if (!isNotSingle)
+    //    {
+    //        T[] objects = FindObjectsOfType<T>();
+    //        foreach (T obj in objects)
+    //        {
+    //            if (obj.gameObject != this.gameObject)
+    //            {
+    //                Destroy(this.gameObject);
+    //            }
+    //        }
+    //    }
+    //    DontDestroyOnLoad(gameObject);
+    //}
 }
