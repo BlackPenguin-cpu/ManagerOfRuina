@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 3570448916827745884}
   - component: {fileID: 3570448916827745885}
   - component: {fileID: 3570448916827745887}
+  - component: {fileID: 2359225834399313118}
   m_Layer: 5
   m_Name: MarkerImg
   m_TagString: Untagged
@@ -167,6 +168,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MarkerImg: {fileID: 3570448916827745885}
   Icon: {fileID: 3570448915055691583}
+--- !u!95 &2359225834399313118
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3570448916827745883}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 34f86eb9a1a53f247b9b1d62cf828cdd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6420229478064497050
 GameObject:
   m_ObjectHideFlags: 0

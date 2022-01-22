@@ -30,7 +30,7 @@ public class InGameCanvas : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             Pop(Random.Range(0, 4));
         }
