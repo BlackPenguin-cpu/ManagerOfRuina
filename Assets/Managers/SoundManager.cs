@@ -14,8 +14,8 @@ public class SoundManager : Singleton<SoundManager>
 {
     public AudioSource audioSource;
     public List<Clip> clips;
-    public Button BGMBar;
-    public Button SFXBar;
+    public Slider BGMBar;
+    public Slider SFXBar;
     public bool On = true;
     public bool SFXOn = true;
 
@@ -75,6 +75,16 @@ public class SoundManager : Singleton<SoundManager>
         object_source.Play();
 
         Destroy(audio_object, _clip.length);
+    }
+
+    public void MusicChange()
+    {
+        SetMusicVolume(BGMBar.value);
+    }
+
+    public void SoundChange()
+    {
+        SetSEVolume(BGMBar.value);
     }
 
     public void SetMusicVolume(float volume)
