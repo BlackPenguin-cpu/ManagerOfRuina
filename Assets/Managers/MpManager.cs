@@ -26,7 +26,7 @@ public class MpManager : MonoBehaviour
 
     int YinPowerCost = 100;
 
-    int StatusUpgradeValue = 40;
+    int StatusUpgradeValue = 30;
     [SerializeField] TextMeshProUGUI StatusText;
 
     public void OnOffButton()
