@@ -56,6 +56,7 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("TitleScene");
+        Time.timeScale = 1;
     }
     void GaugePrint()
     {
@@ -168,13 +169,13 @@ public class GameManager : Singleton<GameManager>
     public void GameOver()
     {
         ui[1].SetActive(true);
-        Texts[4].text = Singleton<TimeManager>.Instance.years + "년 차";
+        Texts[5].text = Singleton<TimeManager>.Instance.years + "년 차";
         Time.timeScale = 0;
     }
     public void GameWin()
     {
         ui[0].SetActive(false);
-        Texts[5].text = Singleton<TimeManager>.Instance.years + "년 차";
+        Texts[4].text = Singleton<TimeManager>.Instance.years + "년 차";
         Debug.Log("우린 살았어!");
         Time.timeScale = 0;
     }

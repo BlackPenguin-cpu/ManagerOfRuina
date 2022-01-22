@@ -27,6 +27,7 @@ public class MpManager : MonoBehaviour
     int YinPowerCost = 100;
 
     int StatusUpgradeValue = 40;
+    [SerializeField] TextMeshProUGUI StatusText;
 
     public void OnOffButton()
     {
@@ -122,6 +123,22 @@ public class MpManager : MonoBehaviour
         GameManager.Instance.BallonCooltime = 2;
     }
 
+    public void PopulationUpgrade()
+    {
+        if (GameManager.Instance.MP >= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Population)
+        {
+            GameManager.Instance.MP -= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Population;
+            GameManager.Instance.addStatusMinValue.Population++;
+        }
+    }
+    public void EnvironmentUpgrade()
+    {
+        if (GameManager.Instance.MP >= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Environment)
+        {
+            GameManager.Instance.MP -= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Environment;
+            GameManager.Instance.addStatusMinValue.Environment++;
+        }
+    }
     public void HappinessUpgrade()
     {
         if (GameManager.Instance.MP >= StatusUpgradeValue)
@@ -130,12 +147,13 @@ public class MpManager : MonoBehaviour
             GameManager.Instance.addStatusMinValue.Happiness++;
         }
     }
-    public void EnvironmentUpgrade()
+
+    public void ResourcesUpgrade()
     {
-        if (GameManager.Instance.MP >= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Happiness)
+        if (GameManager.Instance.MP >= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Resources)
         {
-            GameManager.Instance.MP -= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Happiness;
-            GameManager.Instance.addStatusMinValue.Happiness++;
+            GameManager.Instance.MP -= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Resources;
+            GameManager.Instance.addStatusMinValue.Resources++;
         }
     }
 
