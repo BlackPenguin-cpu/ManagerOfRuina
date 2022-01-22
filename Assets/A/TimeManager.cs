@@ -9,8 +9,6 @@ public class TimeManager : MonoBehaviour
     private int years;
     [SerializeField]
     private TextMeshProUGUI tmpro;
-    [SerializeField]
-    private EventManager ev;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,14 +20,14 @@ public class TimeManager : MonoBehaviour
     void Update()
     {
         duration += Time.deltaTime;
-        if(duration >= 60)
+        if(duration >= 10)
         {
-            duration -= 60;
+            duration -= 10;
             years++;
             tmpro.text = years.ToString() + "³â Â÷";
             if(years % 2 == 0)
             {
-                ev.Event();
+                Singleton<EventManager>.Instance.Event();
             }
         }
     }
