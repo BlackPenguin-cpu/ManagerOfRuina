@@ -10,8 +10,13 @@ public class Marker : MonoBehaviour
     [SerializeField] Image Icon;
     InGameCanvas canvas;
 
+    Animator anime;
+
+
     public void SetImage(Sprite _marker, Sprite _icon, InGameCanvas _canvas)
     {
+        anime = GetComponent<Animator>();
+        anime.SetBool("On", true);
         MarkerImg.sprite = _marker;
         Icon.sprite = _icon;
         canvas = _canvas;
@@ -32,6 +37,18 @@ public class Marker : MonoBehaviour
             default:
                 break;
         }
+        anime.SetBool("Off", true);
+    }
+
+    public void OnEnd()
+    {
+        anime.SetBool("On", false);
+        anime.SetBool("Off", false);
+    }
+
+    public void Push()
+    {
         canvas.Push(this);
+        OnEnd();
     }
 }
