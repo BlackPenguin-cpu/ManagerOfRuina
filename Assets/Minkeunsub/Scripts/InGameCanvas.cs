@@ -64,7 +64,7 @@ public class InGameCanvas : Singleton<InGameCanvas>
     {
         var temp = Markers.Pop();
         temp.gameObject.SetActive(true);
-        temp.SetImage(Backgrounds[index], Icons[index], this);
+        temp.SetImage(Backgrounds[index], Icons[index], this, (States)index);
         return temp;
     }
 
@@ -72,7 +72,7 @@ public class InGameCanvas : Singleton<InGameCanvas>
     {
         var temp = Markers.Pop();
         temp.gameObject.SetActive(true);
-        temp.SetImage(Backgrounds[(int)state], Icons[(int)state], this);
+        temp.SetImage(Backgrounds[(int)state], Icons[(int)state], this, state);
         return temp;
     }
 

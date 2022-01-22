@@ -21,8 +21,9 @@ public class Marker : MonoBehaviour
     Animator anime;
 
 
-    public void SetImage(Sprite _marker, Sprite _icon, InGameCanvas _canvas)
+    public void SetImage(Sprite _marker, Sprite _icon, InGameCanvas _canvas, States _state)
     {
+        thisState = _state;
         anime = GetComponent<Animator>();
         anime.SetBool("On", true);
         MarkerImg.sprite = _marker;
