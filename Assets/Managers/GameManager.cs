@@ -15,6 +15,7 @@ public class GameManager : Singleton<GameManager>
 {
     [Header("메인 스테이터스")]
     public Values Status;
+    [SerializeField] private List<Slider> StatusGague;
     
     [Header("Ballon 관련")]
     public Values addStatusMaxValue;
@@ -24,12 +25,14 @@ public class GameManager : Singleton<GameManager>
 
     [Header("음양게이지")]
     public int MainGauge;
+    [SerializeField] private Slider MainGague;
 
     [Header("MP 관련")]
     public int MPMax;
     public int MP;
     public int MpRegenrateValue;
-    private float nowMpRegenrateValue
+    private float nowMpRegenrateCooldown;
+    [SerializeField] private Slider MpGague;
     void Start()
     {
 
@@ -38,9 +41,23 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-
+        GaugePrint();
+        MpIncrease();
+    }
+    void GaugePrint()
+    {
+        //Status Value
+        StatusGague[0].value = status
     }
 
+    void MpIncrease()
+    {
+        if(nowMpRegenrateCooldown > 1 && MPMax > MP)
+        {
+            MP += MpRegenrateValue;
+        }
+        nowMpRegenrateCooldown += Time.deltaTime;
+    }
     public void ClickedBallon(BallonType type)
     {
         switch (type)
