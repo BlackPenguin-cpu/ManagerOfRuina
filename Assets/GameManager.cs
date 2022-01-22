@@ -83,9 +83,9 @@ public class GameManager : Singleton<GameManager>
         {
             GameOver();
         }
-        if (Status.Environment > 100)
+        if (Status.Population > 100)
         {
-            Status.Environment = 100;
+            Status.Population = 100;
         }
         if (Status.Happiness > 100)
         {
@@ -175,7 +175,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void GameWin()
     {
-        ui[0].SetActive(false);
+        ui[0].SetActive(true);
         Texts[4].text = Singleton<TimeManager>.Instance.years + "년 차";
         SoundManager.Instance.Playbgm("Clear");
         Debug.Log("우린 살았어!");

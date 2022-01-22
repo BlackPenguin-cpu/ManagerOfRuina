@@ -20,12 +20,12 @@ public class TimeManager : Singleton<TimeManager>
     void Update()
     {
         duration += Time.deltaTime;
-        if(duration >= 30)
+        if(duration >= 20)
         {
             duration = 0;
             years++;
             tmpro.text = years.ToString() + "³â Â÷";
-            if(years % 2 == 0)
+            if(years % 2 == 0 && years != 2)
             {
                 Singleton<EventManager>.Instance.Event();
             }

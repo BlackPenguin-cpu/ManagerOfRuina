@@ -21,13 +21,13 @@ public class MpManager : MonoBehaviour
     int MaxManaLevel = 1;
     [SerializeField] TextMeshProUGUI MaxMpText;
 
-    int YanPowerCost = 125;
+    int YanPowerCost = 100;
     [SerializeField] TextMeshProUGUI YanPowerText;
 
     int YinPowerCost = 100;
 
     int StatusUpgradeValue = 30;
-    [SerializeField] TextMeshProUGUI StatusText;
+    [SerializeField] TextMeshProUGUI[] StatusText;
 
     public void OnOffButton()
     {
@@ -61,8 +61,9 @@ public class MpManager : MonoBehaviour
     }
     public void RegenerateMpLevelUp()
     {
-        if (GameManager.Instance.MP > ManaLevelupCost * ManaLevelupLevel)
+        if (GameManager.Instance.MP >= ManaLevelupCost * ManaLevelupLevel)
         {
+            SoundManager.Instance.PlaySound("SkillUp");
             GameManager.Instance.MP -= ManaLevelupCost * ManaLevelupLevel;
             ManaLevelupLevel++;
             GameManager.Instance.MpRegenrateValue++;
@@ -72,8 +73,9 @@ public class MpManager : MonoBehaviour
 
     public void MaxMpLevelUp()
     {
-        if (GameManager.Instance.MP > MaxManaCost * MaxManaLevel)
+        if (GameManager.Instance.MP >= MaxManaCost * MaxManaLevel)
         {
+            SoundManager.Instance.PlaySound("SkillUp");
             GameManager.Instance.MP -= MaxManaCost * MaxManaLevel;
             MaxManaLevel++;
             GameManager.Instance.MPMax += 25;
@@ -86,6 +88,7 @@ public class MpManager : MonoBehaviour
     {
         if (GameManager.Instance.MP >= YanPowerCost)
         {
+            SoundManager.Instance.PlaySound("SkillUp");
             GameManager.Instance.MP -= YanPowerCost;
             if (YanPowerCoroutine != null)
                 StopCoroutine(YanPowerCoroutine);
@@ -107,6 +110,7 @@ public class MpManager : MonoBehaviour
     {
         if (GameManager.Instance.MP >= YinPowerCost)
         {
+            SoundManager.Instance.PlaySound("SkillUp");
             GameManager.Instance.MP -= YinPowerCost;
 
             if (YinPowerCoroutine != null)
@@ -127,15 +131,19 @@ public class MpManager : MonoBehaviour
     {
         if (GameManager.Instance.MP >= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Population)
         {
+            SoundManager.Instance.PlaySound("SkillUp");
             GameManager.Instance.MP -= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Population;
             GameManager.Instance.addStatusMinValue.Population++;
+            StatusText[0].text = (StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Population).ToString();
         }
     }
     public void EnvironmentUpgrade()
     {
         if (GameManager.Instance.MP >= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Environment)
         {
+            SoundManager.Instance.PlaySound("SkillUp");
             GameManager.Instance.MP -= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Environment;
+            StatusText[1].text = (StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Environment).ToString();
             GameManager.Instance.addStatusMinValue.Environment++;
         }
     }
@@ -143,7 +151,9 @@ public class MpManager : MonoBehaviour
     {
         if (GameManager.Instance.MP >= StatusUpgradeValue)
         {
+            SoundManager.Instance.PlaySound("SkillUp");
             GameManager.Instance.MP -= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Happiness;
+            StatusText[2].text = (StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Happiness).ToString();
             GameManager.Instance.addStatusMinValue.Happiness++;
         }
     }
@@ -152,7 +162,9 @@ public class MpManager : MonoBehaviour
     {
         if (GameManager.Instance.MP >= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Resources)
         {
+            SoundManager.Instance.PlaySound("SkillUp");
             GameManager.Instance.MP -= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Resources;
+            StatusText[3].text = (StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Resources).ToString();
             GameManager.Instance.addStatusMinValue.Resources++;
         }
     }
