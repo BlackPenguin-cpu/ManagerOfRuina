@@ -10,8 +10,8 @@ public class MpManager : MonoBehaviour
     [SerializeField] Image SkillBar;
     [SerializeField] Image PowerBar;
     bool SkillBarOn;
-    bool PowerBarOn;
     [SerializeField] Sprite[] Barsprites;
+    bool PowerBarOn;
 
     int ManaLevelupCost = 100;
     int ManaLevelupLevel = 1;
@@ -21,10 +21,10 @@ public class MpManager : MonoBehaviour
     int MaxManaLevel = 1;
     [SerializeField] TextMeshProUGUI MaxMpText;
 
-    int YanPowerCost = 150;
+    int YanPowerCost = 125;
     [SerializeField] TextMeshProUGUI YanPowerText;
 
-    
+    int YinPowerCost = 100;
 
     public void OnOffButton()
     {
@@ -63,6 +63,7 @@ public class MpManager : MonoBehaviour
             GameManager.Instance.MP -= ManaLevelupCost * ManaLevelupLevel;
             ManaLevelupLevel++;
             GameManager.Instance.MpRegenrateValue++;
+            MpText.text = (ManaLevelupCost * ManaLevelupLevel).ToString();
         }
     }
 
@@ -73,6 +74,7 @@ public class MpManager : MonoBehaviour
             GameManager.Instance.MP -= MaxManaCost * MaxManaLevel;
             MaxManaLevel++;
             GameManager.Instance.MPMax += 25;
+            MaxMpText.text = (MaxManaCost * MaxManaLevel).ToString();
         }
     }
 
@@ -81,8 +83,10 @@ public class MpManager : MonoBehaviour
     {
         if (GameManager.Instance.MP >= YanPowerCost)
         {
-            GameManager.Instance.MP -= 150;
+            GameManager.Instance.MP -= YanPowerCost;
+            if(YanPowerCoroutine != null)
             StopCoroutine(YanPowerCoroutine);
+            
             YanPowerCoroutine = StartCoroutine(YanPowerDelay());
         }
     }
@@ -90,9 +94,31 @@ public class MpManager : MonoBehaviour
     {
         GameManager.Instance.MaxValue = true;
         YanPowerText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(10);
         GameManager.Instance.MaxValue = false;
         YanPowerText.gameObject.SetActive(false);
     }
+
+    Coroutine YinPowerCoroutine; 
+    public void YinPower()
+    {
+        if (GameManager.Instance.MP >= YinPowerCost)
+        {
+            GameManager.Instance.MP -= YinPowerCost;
+
+            if(YinPowerCoroutine != null)
+            {
+                StopCoroutine(YinPowerCoroutine);
+            }
+            YinPowerCoroutine = StartCoroutine(YinPowerDelay());
+        }
+    }
+    IEnumerator YinPowerDelay()
+    {
+        GameManager.Instance.BallonCooltime = 1;
+        yield return new WaitForSeconds(15);
+        GameManager.Instance.BallonCooltime = 2;
+    }
+
 
 }

@@ -28,6 +28,8 @@ public class InGameCanvas : Singleton<InGameCanvas>
     [SerializeField] Slider BackgroundSlider;
     [SerializeField] Slider EffectSlider;
 
+    [SerializeField] Transform Tank;
+
     void Start()
     {
 
@@ -52,7 +54,7 @@ public class InGameCanvas : Singleton<InGameCanvas>
     {
         for (int i = 0; i < positions.Count; i++)
         {
-            var temp = Instantiate(MarkerPrefab, transform);
+            var temp = Instantiate(MarkerPrefab, Tank);
             temp.gameObject.SetActive(false);
             MarkersList.Add(temp);
             MarkAble.Add(true);
