@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum States
 {
@@ -22,6 +23,10 @@ public class InGameCanvas : Singleton<InGameCanvas>
     [Header("Sprites")]
     [SerializeField] Sprite[] Icons = new Sprite[4];
     [SerializeField] Sprite[] Backgrounds = new Sprite[4];
+
+    [Header("Slider")]
+    [SerializeField] Slider BackgroundSlider;
+    [SerializeField] Slider EffectSlider;
 
     void Start()
     {
