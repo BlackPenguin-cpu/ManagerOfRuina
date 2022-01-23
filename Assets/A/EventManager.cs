@@ -27,8 +27,8 @@ public class EventManager : Singleton<EventManager>
         }
         else if (random <= 27.5f)
         {
-            Singleton<GameManager>.Instance.Status.Population -= 12 + Value;
-            Singleton<GameManager>.Instance.Status.Happiness -= 16 + Value;
+            Singleton<GameManager>.Instance.Status.Population -= 13 + Value;
+            Singleton<GameManager>.Instance.Status.Happiness -= 17 + Value;
             Singleton<GameManager>.Instance.Status.Environment -= 5 + Value;
             war++;
             eventname.text = war + "차 세계대전 반발";
@@ -36,14 +36,14 @@ public class EventManager : Singleton<EventManager>
         }
         else if (random <= 37.5f)
         {
-            Singleton<GameManager>.Instance.Status.Environment -= 16 + Value;
-            Singleton<GameManager>.Instance.Status.Resources -= 5 + Value;
+            Singleton<GameManager>.Instance.Status.Environment -= 15 + Value;
+            Singleton<GameManager>.Instance.Status.Resources -= 7 + Value;
             eventname.text = "원자력 폭발";
             eventlore.text = "원자력 연구소에서 5등급 원자력 폭발이 발생했습니다. 주변에 사람이 사는 곳이 없어 인명 피해는 미미하지만, 주변 환경이 심하게 오염되었습니다.\n환경이 감소합니다.";
         }
         else if (random <= 52.5f)
         {
-            Singleton<GameManager>.Instance.Status.Resources -= 13 + Value;
+            Singleton<GameManager>.Instance.Status.Resources -= 14 + Value;
             eventname.text = "자원 고갈";
             eventlore.text = "어느 한 나라의 과도한 자원 채집으로 광맥이 고갈되었습니다.\n자원이 감소합니다";
         }
@@ -56,20 +56,20 @@ public class EventManager : Singleton<EventManager>
         else if (random <= 77.5f)
         {
             Singleton<GameManager>.Instance.Status.Population -= 8 + Value;
-            Singleton<GameManager>.Instance.Status.Happiness -= 10 + Value;
+            Singleton<GameManager>.Instance.Status.Happiness -= 11 + Value;
             eventname.text = "식량 고갈";
             eventlore.text = "한 공동체에서의 식량이 모두 고갈 되었습니다. 이번 식량은 어쩌면 고기가 될지도 모르겠네요.\n행복 지수가 감소합니다.";
         }
         else if (random <= 87.5f)
         {
             Singleton<GameManager>.Instance.Status.Population -= 12 + Value;
-            Singleton<GameManager>.Instance.Status.Happiness -= 6 + Value;
+            Singleton<GameManager>.Instance.Status.Happiness -= 7 + Value;
             eventname.text = "무력 지배자";
             eventlore.text = "한 나라에 무력으로 정권을 장악하는 독재자가 등장하였다고 합니다. 그 곳의 국민들은 과도한 업무와 세금에 시달리겠군요.\n행복 지수가 감소합니다.";
         }
         else if (random <= 100)
         {
-            Singleton<GameManager>.Instance.Status.Population -= 3 + Value;
+            Singleton<GameManager>.Instance.Status.Population -= 4 + Value;
             Singleton<GameManager>.Instance.Status.Resources -= 12 + Value;
             eventname.text = "화물선 침몰";
             eventlore.text = "마을 하나를 살릴 정도의 귀중한 자원들을 옮기던 화물선이 암석충돌로 인해 바닷속으로 가라앉고 말았습니다.\n자원이 감소합니다.";
