@@ -7202,10 +7202,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isNotSingle: 0
   Status:
-    Population: 10
-    Happiness: 10
-    Resources: 10
-    Environment: 10
+    Population: 15
+    Happiness: 15
+    Resources: 15
+    Environment: 15
   StatusGauge:
   - {fileID: 1784740642}
   - {fileID: 587089125}
