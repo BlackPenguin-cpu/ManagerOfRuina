@@ -143,8 +143,8 @@ public class MpManager : MonoBehaviour
         {
             SoundManager.Instance.PlaySound("SkillUp");
             GameManager.Instance.MP -= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Environment;
-            StatusText[1].text = (StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Environment).ToString();
             GameManager.Instance.addStatusMinValue.Environment++;
+            StatusText[1].text = (StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Environment).ToString();
         }
     }
     public void HappinessUpgrade()
@@ -153,8 +153,8 @@ public class MpManager : MonoBehaviour
         {
             SoundManager.Instance.PlaySound("SkillUp");
             GameManager.Instance.MP -= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Happiness;
-            StatusText[2].text = (StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Happiness).ToString();
             GameManager.Instance.addStatusMinValue.Happiness++;
+            StatusText[2].text = (StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Happiness).ToString();
         }
     }
 
@@ -164,8 +164,8 @@ public class MpManager : MonoBehaviour
         {
             SoundManager.Instance.PlaySound("SkillUp");
             GameManager.Instance.MP -= StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Resources;
-            StatusText[3].text = (StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Resources).ToString();
             GameManager.Instance.addStatusMinValue.Resources++;
+            StatusText[3].text = (StatusUpgradeValue * GameManager.Instance.addStatusMinValue.Resources).ToString();
         }
     }
 
